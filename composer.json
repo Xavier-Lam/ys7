@@ -1,0 +1,29 @@
+{
+    "name": "neteast/ys7",
+    "version": "0.1.0",
+    "type": "library",
+    "description": "海康威视设备萤石开放平台(萤石云)PHP SDK,用于接入海康设备直播,通信等功能",
+    "keywords": [
+        "海康威视",
+        "萤石",
+        "Hikvision"
+    ],
+    "homepage": "https://github.com/Xavier-Lam/ys7",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Xavier-Lam",
+            "email": "xavierlam7@hotmail.com",
+            "homepage": "https://github.com/Xavier-Lam",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Neteast\\YS7\\": "YS7/"
+        }
+    },
+    "require": {
+        "php": ">=5.3"
+    }
+}
