@@ -147,13 +147,6 @@ class Curl
             $func($url, $method, $body);
         }
         // 可以设置一些代理之类的
-
-        //$f = fopen('php://temp', 'w');
-        //$this->setopt(CURLOPT_VERBOSE, true);
-        //$this->setopt(CURLOPT_STDERR, $f);
-        //$this->f = $f;
-
-        //$this->setopt(CURLOPT_PROXY, 'http://192.168.58.153:12580');
     }
 
     protected function afterExec($url, $method, $body, $result, $err, $status, $contentType)
@@ -161,12 +154,6 @@ class Curl
         foreach($this->funcs['afterExec'] as $func) {
             $func($url, $method, $body, $result, $err, $status, $contentType);
         }
-        // 可以做日志
-        //$f = $this->f;
-        //rewind($f);
-        //$data = stream_get_contents($f);
-        //pr($data);
-        //exit;
     }
 
     protected function getCh()

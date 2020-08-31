@@ -84,7 +84,7 @@ abstract class BaseClient
         if(isset($json['code'])) {
             throw new ResponseError(
                 $json['code'],
-                $json['message'],
+                $json['msg'],
                 $json['data'],
                 $response->statusCode);
         } else {

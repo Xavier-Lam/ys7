@@ -9,6 +9,20 @@ use Neteast\YS7\Client\AuthClient;
 class CameraClient extends AuthClient
 {
     /**
+     * 设备抓拍图片
+     * https://open.ys7.com/doc/zh/book/index/device_option.html#device_option-api4
+     * @param mixed $deviceSerial
+     * @return mixed
+     */
+    public function capture($deviceSerial, $channelNo = 1)
+    {
+        return $this->sendWithAuth('/api/lapp/device/capture', [
+            'deviceSerial' => $deviceSerial,
+            'channelNo' => $channelNo
+        ])->json()['data']['picUrl'];
+    }
+
+    /**
      * 获取摄像头列表
      * https://open.ys7.com/doc/zh/book/index/device_select.html#device_select-api3
      */
@@ -21,15 +35,16 @@ class CameraClient extends AuthClient
     }
 
     /**
-     * 获取指定设备的通道信息
-     * https://open.ys7.com/doc/zh/book/index/device_select.html#device_select-api6
+     * 获取设备状态信息
+     * https://open.ys7.com/doc/zh/book/index/device_select.html#device_select-api5
      * @param mixed $deviceSerial
      * @return mixed
      */
-    public function listByDevice($deviceSerial)
+    public function status($deviceSerial, $channelNo = 1)
     {
-        return $this->sendWithAuth('/api/lapp/device/camera/list', [
-            'deviceSerial' => $deviceSerial
+        return $this->sendWithAuth('/api/lapp/device/status/get', [
+            'deviceSerial' => $deviceSerial,
+            'channelNo' => $channelNo
         ])->json()['data'];
     }
 }

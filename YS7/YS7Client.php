@@ -7,6 +7,7 @@ use Neteast\YS7\Message\Consumer;
 /**
  * YS7Client
  *
+ * @property Clients\AI\AIClient $ai AI
  * @property Clients\Device\DeviceClient $device 设备
  * @property Clients\LiveClient $live 直播
  * @property Clients\MQ\MQClient $mq 消息
@@ -18,6 +19,7 @@ class YS7Client extends AuthClient
     protected $baseUrl = 'https://open.ys7.com';
 
     protected $clients = [
+        'ai' => Clients\AI\AIClient::class,
         'device' => Clients\Device\DeviceClient::class,
         'live' => Clients\LiveClient::class,
         'mq' => Clients\MQ\MQClient::class,

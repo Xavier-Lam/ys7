@@ -1,8 +1,13 @@
 # 萤石开放平台PHP SDK
 
+[![Donate with Bitcoin](https://en.cryptobadges.io/badge/micro/1BdJG31zinrMFWxRt2utGBU2jdpv8xSgju)](https://en.cryptobadges.io/donate/1BdJG31zinrMFWxRt2utGBU2jdpv8xSgju)
+
 海康威视设备萤石开放平台(萤石云)PHP SDK,用于接入海康设备直播,通信等功能
 
-## 安装
+官方文档:
+> https://open.ys7.com/doc/zh/book/index/user.html
+
+## Installation
     composer require neteast\ys7
 
 ## Quickstart
@@ -35,7 +40,7 @@
     $client->device->configuration->setNotify($deviceSerial, true);
 
     // 控制云台转动
-    $client->ptz->start($deviceSerial, 0);
+    $client->ptz->start($deviceSerial, \Neteast\YS7\Enum\PTZ::DIRECTION_UP);
     sleep(1);
     $client->ptz->stop();
 
@@ -56,3 +61,13 @@
         $consumer->consume();
         sleep(30);
     }
+
+## TODOS
+* 消息处理相关信号
+
+## Contribute
+对于需要使用并未封装的api,可依照本类库封装风格进行封装,通过pull request合作开发
+
+## Changelog
+### 0.1.0
+* 基本功能封装

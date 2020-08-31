@@ -6,6 +6,7 @@ use Neteast\YS7\Client\AuthClient;
 /**
  * 设备
  * https://open.ys7.com/doc/zh/book/index/device.html
+ * 仅列举设备管理相关接口,需要传channelNo的请移步camera
  *
  * @property ConfigurationClient $configuration 配置
  * @property CameraClient $camera 摄像头
@@ -28,7 +29,6 @@ class DeviceClient extends AuthClient
      * https://open.ys7.com/doc/zh/book/index/device_option.html#device_option-api1
      * @param mixed $deviceSerial
      * @param mixed $validateCode
-     * @return mixed
      */
     public function add($deviceSerial, $validateCode)
     {
@@ -42,7 +42,6 @@ class DeviceClient extends AuthClient
      * 删除设备
      * https://open.ys7.com/doc/zh/book/index/device_option.html#device_option-api2
      * @param mixed $deviceSerial
-     * @return mixed
      */
     public function delete($deviceSerial)
     {
@@ -75,6 +74,32 @@ class DeviceClient extends AuthClient
     public function info($deviceSerial)
     {
         return $this->sendWithAuth('/api/lapp/device/info', [
+            'deviceSerial' => $deviceSerial
+        ])->json()['data'];
+    }
+
+    /**
+     * 根据设备序列号查询设备能力集
+     * https://open.ys7.com/doc/zh/book/index/device_select.html#device_select-api5
+     * @param mixed $deviceSerial
+     * @return mixed
+     */
+    public function capacity($deviceSerial)
+    {
+        return $this->sendWithAuth('/api/lapp/device/capacity', [
+            'deviceSerial' => $deviceSerial
+        ])->json()['data'];
+    }
+
+    /**
+     * 获取指定设备的通道信息
+     * https://open.ys7.com/doc/zh/book/index/device_select.html#device_select-api6
+     * @param mixed $deviceSerial
+     * @return mixed
+     */
+    public function cameras($deviceSerial)
+    {
+        return $this->sendWithAuth('/api/lapp/device/camera/list', [
             'deviceSerial' => $deviceSerial
         ])->json()['data'];
     }
