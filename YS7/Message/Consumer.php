@@ -1,6 +1,7 @@
 <?php
 namespace Neteast\YS7\Message;
 
+use Neteast\YS7\Exceptions\ResponseError;
 use Neteast\YS7\YS7Client;
 
 /**
@@ -18,7 +19,7 @@ class Consumer
     {
         $this->client = $client;
         $this->group = $group;
-        $this->consumerId = $this->client->mq->consumer->create();
+        $this->createConsumerId();
     }
 
     public function getGroup()
@@ -40,7 +41,17 @@ class Consumer
 
     public function consume($commit = true)
     {
-        $messages = $this->client->mq->consumer->getMessages($this->consumerId);
+        try {
+            $messages = $this->client->mq->consumer->getMessages($this->consumerId);
+        }
+        catch(ResponseError $e) {
+            if($e->getCode() === "70101") {
+                $this->createConsumerId();
+                $messages = $this->client->mq->consumer->getMessages($this->consumerId);
+            } else {
+                throw $e;
+            }
+        }
 
         // TODO: try catch signals
         foreach($messages as $message) {
@@ -50,5 +61,10 @@ class Consumer
         }
 
         $commit && $this->client->mq->consumer->commit($this->consumerId);
+    }
+
+    protected function createConsumerId()
+    {
+        return $this->consumerId = $this->client->mq->consumer->create();
     }
 }

@@ -8,7 +8,7 @@ use Neteast\YS7\Client\AuthClient;
  */
 class VideoClient extends AuthClient
 {
-    public function getByTime($deviceSerial, $startTime = null, $endTime = null, $channelNo = 1, $recType = 0)
+    public function records($deviceSerial, $startTime = null, $endTime = null, $channelNo = 1, $recType = 0)
     {
         $req = [
             'deviceSerial' => $deviceSerial,

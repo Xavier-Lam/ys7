@@ -9,6 +9,7 @@ use Neteast\YS7\Message\Consumer;
  *
  * @property Clients\AI\AIClient $ai AI
  * @property Clients\Device\DeviceClient $device 设备
+ * @property Clients\EZOpen $ezopen ezopen
  * @property Clients\LiveClient $live 直播
  * @property Clients\MQ\MQClient $mq 消息
  * @property Clients\RAM\RAMClient $ram 子账户
@@ -21,11 +22,17 @@ class YS7Client extends AuthClient
     protected $clients = [
         'ai' => Clients\AI\AIClient::class,
         'device' => Clients\Device\DeviceClient::class,
+        'ezopen' => Clients\EZOpen::class,
         'live' => Clients\LiveClient::class,
         'mq' => Clients\MQ\MQClient::class,
         'ram' => Clients\RAM\RAMClient::class,
         'token' => Clients\TokenClient::class
     ];
+
+    public static function create($auth = null)
+    {
+        return new static($auth);
+    }
 
     public function __construct($auth = null)
     {

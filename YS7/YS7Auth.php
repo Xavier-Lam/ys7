@@ -13,6 +13,11 @@ class YS7Auth extends Auth
 
     private $appSecret;
 
+    public static function create($appKey, $appSecret)
+    {
+        return new static($appKey, $appSecret);
+    }
+
     public function __construct($appKey, $appSecret)
     {
         $this->appKey = $appKey;

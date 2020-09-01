@@ -25,13 +25,13 @@
     $devices = $client->device->list();
 
     // 获取设备信息
-    $info = $client->device->info();
+    $info = $client->device->info($deviceSerial);
 
     // 获取摄像头列表
     $cameras = $client->device->camera->list();
 
     // 根据设备获取摄像头列表
-    $cameras = $client->device->camera->listByDevice($deviceSerial);
+    $cameras = $client->device->cameras($deviceSerial);
 
     // 关闭加密功能
     $client->device->configuration->setEncrypt($deviceSerial, $validateCode, false);
@@ -39,17 +39,28 @@
     // 开启下线通知
     $client->device->configuration->setNotify($deviceSerial, true);
 
+### 云台
     // 控制云台转动
     $client->ptz->start($deviceSerial, \Neteast\YS7\Enum\PTZ::DIRECTION_UP);
     sleep(1);
     $client->ptz->stop();
 
+### 地址获取
     // 开通直播功能
     $client->live->open($deviceSerial, $channelNo);
 
     // 获取直播地址
     $data = $client->live->address($deviceSerial, $expiresIn, $channelNo);
 
+    // 获取录像列表
+    $records = $client->device->records($deviceSerial);
+
+    // 获取ezopen直播地址
+    $addr = $client->ezopen->live($deviceSerial, $channelNo);
+    // 获取ezopen录像地址
+    $addr = $client->ezopen->rec($deviceSerial, $channelNo, 1598940000);
+
+#### 通知
     // 通知
     $consumer = $client->consumer();
     $consumer->addHandler(function($message, \Neteast\YS7\Message\Consumer $consumer, YS7Client $client) {
@@ -61,6 +72,30 @@
         $consumer->consume();
         sleep(30);
     }
+
+### 子账号
+    // 创建子账号
+    $accountId = $client->ram->account->create($accountName, $password);
+
+    // 获取子账号信息
+    $data = $client->ram->account->get($accountId);
+
+    // 设置子账号权限策略
+    use Neteast\YS7\Policy\Permission;
+    use Neteast\YS7\Policy\Resource;
+    use Neteast\YS7\Policy\Statement;
+
+    $devices = [Resource::create($deviceSerial, $channelNo)];
+    $permissions = [Permission::UPDATE];
+    $statements = [Statement::create($permissions, $devices)];
+    $client->ram->policy->set($statements);
+
+    // 获取子账号auth
+    $auth = $client->ram->token->get($accountId);
+
+    // 使用子账号
+    $client = new YS7Client($auth);
+    $client->device->list();
 
 ## TODOS
 * 消息处理相关信号
