@@ -1,5 +1,6 @@
 # 萤石开放平台PHP SDK
 
+![Packagist Version](https://img.shields.io/packagist/v/neteast/ys7)
 [![Donate with Bitcoin](https://en.cryptobadges.io/badge/micro/1BdJG31zinrMFWxRt2utGBU2jdpv8xSgju)](https://en.cryptobadges.io/donate/1BdJG31zinrMFWxRt2utGBU2jdpv8xSgju)
 
 海康威视设备萤石开放平台(萤石云)PHP SDK,用于接入海康设备直播,通信等功能
@@ -60,10 +61,10 @@
     // 获取ezopen录像地址
     $addr = $client->ezopen->rec($deviceSerial, $channelNo, 1598940000);
 
-#### 通知
+### 通知
     // 通知
     $consumer = $client->consumer();
-    $consumer->addHandler(function($message, \Neteast\YS7\Message\Consumer $consumer, YS7Client $client) {
+    $consumer->addHandler(function(\Neteast\YS7\Message\DataObject\Message $message, \Neteast\YS7\Message\Consumer $consumer, YS7Client $client) {
         // 你的处理业务逻辑
     });
 

@@ -2,6 +2,7 @@
 namespace Neteast\YS7\Message;
 
 use Neteast\YS7\Exceptions\ResponseError;
+use Neteast\YS7\Message\DataObject\Message;
 use Neteast\YS7\YS7Client;
 
 /**
@@ -55,6 +56,7 @@ class Consumer
 
         // TODO: try catch signals
         foreach($messages as $message) {
+            $message = Message::fromApi($message);
             foreach($this->handlers as $handler) {
                 $handler($message, $this, $this->client);
             }
