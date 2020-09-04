@@ -1,6 +1,6 @@
 # 萤石开放平台PHP SDK
 
-![Packagist Version](https://img.shields.io/packagist/v/neteast/ys7)
+[![Packagist Version](https://img.shields.io/packagist/v/neteast/ys7)](https://packagist.org/packages/neteast/ys7)
 [![Donate with Bitcoin](https://en.cryptobadges.io/badge/micro/1BdJG31zinrMFWxRt2utGBU2jdpv8xSgju)](https://en.cryptobadges.io/donate/1BdJG31zinrMFWxRt2utGBU2jdpv8xSgju)
 
 海康威视设备萤石开放平台(萤石云)PHP SDK,用于接入海康设备直播,通信等功能
