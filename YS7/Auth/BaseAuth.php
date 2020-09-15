@@ -1,11 +1,12 @@
 <?php
 namespace Neteast\YS7\Auth;
 
-use Neteast\YS7\YS7Client;
+use Shisa\HTTPClient\Auth\AbstractAuth;
+use Shisa\HTTPClient\Exceptions\ResponseError;
 use Neteast\YS7\YS7Config;
-use Neteast\YS7\Exceptions\ResponseError;
+use Shisa\HTTPClient\HTTP\Request;
 
-abstract class Auth
+abstract class BaseAuth extends AbstractAuth
 {
     private $accesstoken;
 
@@ -14,19 +15,9 @@ abstract class Auth
         return !!$this->getAccessToken();
     }
 
-    public function isInvalidAuth(ResponseError $e)
+    public function isInvalidAuthError(ResponseError $e)
     {
         return $e->getCode() === 10002;
-    }
-
-    public function isRefreshImplemented()
-    {
-        return false;
-    }
-
-    public function refresh(YS7Client $client)
-    {
-        throw new \RuntimeException('not impletmented');
     }
 
     public function setAccessToken($accessToken, $expireTime = null)
@@ -54,6 +45,12 @@ abstract class Auth
             }
         }
         return $this->accesstoken;
+    }
+
+    public function authRequest(Request $request)
+    {
+        $request->data['accessToken'] = $this->getAccessToken();
+        return $request;
     }
 
     protected function getAccessTokenKey()

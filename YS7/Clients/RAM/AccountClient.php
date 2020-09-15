@@ -1,12 +1,12 @@
 <?php
 namespace Neteast\YS7\Clients\RAM;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * https://open.ys7.com/doc/zh/book/index/account-api.html
  */
-class AccountClient extends AuthClient
+class AccountClient extends BaseClient
 {
     /**
      * 创建子账户

@@ -1,12 +1,12 @@
 <?php
 namespace Neteast\YS7\Clients\MQ;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * 消费者
  */
-class ConsumerClient extends AuthClient
+class ConsumerClient extends BaseClient
 {
     /**
      * 创建消费者

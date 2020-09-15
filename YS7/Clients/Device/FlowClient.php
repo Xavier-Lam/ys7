@@ -1,13 +1,13 @@
 <?php
 namespace Neteast\YS7\Clients\Device;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * 客流统计
  * https://open.ys7.com/doc/zh/book/index/device_flow.html
  */
-class FlowClient extends AuthClient
+class FlowClient extends BaseClient
 {
     /**
      * 获取客流统计开关

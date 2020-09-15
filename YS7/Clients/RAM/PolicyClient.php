@@ -1,14 +1,14 @@
 <?php
 namespace Neteast\YS7\Clients\RAM;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 use Neteast\Policy\Statement;
 
 /**
  * 权限策略
  * https://open.ys7.com/doc/zh/book/index/account-api.html
  */
-class PolicyClient extends AuthClient
+class PolicyClient extends BaseClient
 {
     /**
      * 设置子账户的授权策略

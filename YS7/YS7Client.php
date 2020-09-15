@@ -1,8 +1,9 @@
 <?php
 namespace Neteast\YS7;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 use Neteast\YS7\Message\Consumer;
+use Shisa\HTTPClient\Auth\AbstractAuth;
 
 /**
  * YS7Client
@@ -15,7 +16,7 @@ use Neteast\YS7\Message\Consumer;
  * @property Clients\RAM\RAMClient $ram 子账户
  * @property Clients\TokenClient $token 令牌
  */
-class YS7Client extends AuthClient
+class YS7Client extends BaseClient
 {
     protected $baseUrl = 'https://open.ys7.com';
 
@@ -29,15 +30,16 @@ class YS7Client extends AuthClient
         'token' => Clients\TokenClient::class
     ];
 
-    public static function create($auth = null)
+    public static function create(AbstractAuth $auth = null)
     {
         return new static($auth);
     }
 
-    public function __construct($auth = null)
+    public function __construct(AbstractAuth $auth = null)
     {
         parent::__construct($auth);
         $this->setBaseClient($this);
+        $auth->setClient($this);
     }
 
     private $consumers = [];

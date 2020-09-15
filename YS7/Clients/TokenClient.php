@@ -2,7 +2,6 @@
 namespace Neteast\YS7\Clients;
 
 use Neteast\YS7\YS7Auth;
-use Neteast\YS7\Client\BaseClient;
 
 /**
  * 令牌

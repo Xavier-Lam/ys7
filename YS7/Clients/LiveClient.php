@@ -1,13 +1,11 @@
 <?php
 namespace Neteast\YS7\Clients;
 
-use Neteast\YS7\Client\AuthClient;
-
 /**
  * 直播
  * https://open.ys7.com/doc/zh/book/index/address.html
  */
-class LiveClient extends AuthClient
+class LiveClient extends BaseClient
 {
     /**
      * 获取直播地址

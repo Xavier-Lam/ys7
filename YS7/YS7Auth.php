@@ -1,13 +1,12 @@
 <?php
 namespace Neteast\YS7;
 
-use Neteast\YS7\Auth\Auth;
-use Neteast\YS7\YS7Client;
+use Neteast\YS7\Auth\BaseAuth;
 
 /**
  * 可认证客户端
  */
-class YS7Auth extends Auth
+class YS7Auth extends BaseAuth
 {
     private $appKey;
 
@@ -34,14 +33,9 @@ class YS7Auth extends Auth
         return $this->appSecret;
     }
 
-    public function isRefreshImplemented()
+    public function auth()
     {
-        return true;
-    }
-
-    public function refresh(YS7Client $client)
-    {
-        $client->token->get($this);
+        $this->getClient()->token->get($this);
     }
 
     protected function getAccessTokenKey()

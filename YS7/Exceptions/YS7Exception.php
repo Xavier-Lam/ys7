@@ -1,6 +1,9 @@
 <?php
 namespace Neteast\YS7\Exceptions;
 
-class YS7Exception extends \Exception
+use Shisa\HTTPClient\Exceptions\ResponseError as BaseResponseError;
+
+class YS7Exception extends BaseResponseError
 {
+    
 }

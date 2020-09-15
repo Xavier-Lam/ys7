@@ -1,13 +1,11 @@
 <?php
 namespace Neteast\YS7\Clients;
 
-use Neteast\YS7\Client\AuthClient;
-
 /**
  * EZOPEN协议
  * https://open.ys7.com/doc/zh/readme/ezopen.html
  */
-class EZOpen extends AuthClient
+class EZOpen extends BaseClient
 {
     public static $defaultOptions = [
         'resolution' => '',  // 清晰度,空标准,hd高清

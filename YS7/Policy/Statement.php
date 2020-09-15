@@ -28,7 +28,7 @@ class Statement
     {
         return [
             'Permission' => implode(",", $this->permissions),
-            'Resource' => array_map(str, $this->resources)
+            'Resource' => array_map('str', $this->resources)
         ];
     }
 }

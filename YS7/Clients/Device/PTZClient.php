@@ -1,14 +1,14 @@
 <?php
 namespace Neteast\YS7\Clients\Device;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 use Neteast\YS7\Enum\PTZ;
 
 /**
  * 云台
  * https://open.ys7.com/doc/zh/book/index/device_ptz.html
  */
-class PTZClient extends AuthClient
+class PTZClient extends BaseClient
 {
     /**
      * 开始云台转动

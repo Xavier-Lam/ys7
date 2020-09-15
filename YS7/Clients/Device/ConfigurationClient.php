@@ -1,13 +1,13 @@
 <?php
 namespace Neteast\YS7\Clients\Device;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * 配置
  * https://open.ys7.com/doc/zh/book/index/device_switch.html
  */
-class ConfigurationClient extends AuthClient
+class ConfigurationClient extends BaseClient
 {
     /**
      * 视频加密开关

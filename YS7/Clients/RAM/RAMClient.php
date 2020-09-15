@@ -1,7 +1,7 @@
 <?php
 namespace Neteast\YS7\Clients\RAM;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * 子账户
@@ -11,7 +11,7 @@ use Neteast\YS7\Client\AuthClient;
  * @property PolicyClient $policy 策略
  * @property TokenClient $token 令牌
  */
-class RAMClient extends AuthClient
+class RAMClient extends BaseClient
 {
     protected $clients = [
         'account' => AccountClient::class,

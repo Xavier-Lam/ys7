@@ -1,7 +1,7 @@
 <?php
 namespace Neteast\YS7\Clients\Device;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * 设备
@@ -14,7 +14,7 @@ use Neteast\YS7\Client\AuthClient;
  * @property PTZClient $ptz 云台
  * @property VideoClient $video 视频
  */
-class DeviceClient extends AuthClient
+class DeviceClient extends BaseClient
 {
     protected $clients = [
         'camera' => CameraClient::class,

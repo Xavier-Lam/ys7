@@ -1,13 +1,13 @@
 <?php
 namespace Neteast\YS7\Clients\AI;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * 人体人形识别
  * https://open.ys7.com/doc/zh/book/index/ai/body.html
  */
-class HumanClient extends AuthClient
+class HumanClient extends BaseClient
 {
     /**
      * 检测人数

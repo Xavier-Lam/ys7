@@ -2,12 +2,12 @@
 namespace Neteast\YS7\Clients\RAM;
 
 use Neteast\YS7\Auth\YS7SubAuth;
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * https://open.ys7.com/doc/zh/book/index/account-api.html
  */
-class TokenClient extends AuthClient
+class TokenClient extends BaseClient
 {
     /**
      * 获取B模式子账户accessToken

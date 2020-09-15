@@ -1,7 +1,7 @@
 <?php
 namespace Neteast\YS7\Message;
 
-use Neteast\YS7\Exceptions\ResponseError;
+use Neteast\YS7\Exceptions\YS7Exception;
 use Neteast\YS7\Message\DataObject\Message;
 use Neteast\YS7\YS7Client;
 
@@ -45,7 +45,7 @@ class Consumer
         try {
             $messages = $this->client->mq->consumer->getMessages($this->consumerId);
         }
-        catch(ResponseError $e) {
+        catch(YS7Exception $e) {
             if($e->getCode() === "70101") {
                 $this->createConsumerId();
                 $messages = $this->client->mq->consumer->getMessages($this->consumerId);

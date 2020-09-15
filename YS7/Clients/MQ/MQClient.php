@@ -1,7 +1,7 @@
 <?php
 namespace Neteast\YS7\Clients\MQ;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * 消息订阅
@@ -9,7 +9,7 @@ use Neteast\YS7\Client\AuthClient;
  *
  * @property ConsumerClient $consumer
  */
-class MQClient extends AuthClient
+class MQClient extends BaseClient
 {
     protected $clients = [
         'consumer' => ConsumerClient::class

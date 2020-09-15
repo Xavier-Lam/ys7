@@ -1,12 +1,12 @@
 <?php
 namespace Neteast\YS7\Clients\Device;
 
-use Neteast\YS7\Client\AuthClient;
+use Neteast\YS7\Clients\BaseClient;
 
 /**
  * https://open.ys7.com/doc/zh/book/index/device_select.html
  */
-class CameraClient extends AuthClient
+class CameraClient extends BaseClient
 {
     /**
      * 设备抓拍图片

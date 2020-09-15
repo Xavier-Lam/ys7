@@ -25,17 +25,17 @@ class DummyCache implements CacheInterface
 
     }
 
-    public function getMultiple(iterable $keys, $default = null)
+    public function getMultiple($keys, $default = null)
     {
 
     }
 
-    public function setMultiple(iterable $values, $ttl = null)
+    public function setMultiple($values, $ttl = null)
     {
 
     }
 
-    public function deleteMultiple(iterable $keys)
+    public function deleteMultiple($keys)
     {
 
     }
