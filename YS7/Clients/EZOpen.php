@@ -57,7 +57,7 @@ class EZOpen extends BaseClient
 
     private function getVideoId($deviceSerial, $channelNo)
     {
-        $data = $this->baseClient->live->address($deviceSerial, null, $channelNo);
+        $data = $this->getBaseClient()->live->address($deviceSerial, null, $channelNo);
         $originAddress = $data['liveAddress'];
         $originPath = parse_url($originAddress, PHP_URL_PATH);
         $filename = array_pop((explode('/', $originPath)));
