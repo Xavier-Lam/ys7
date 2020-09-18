@@ -7,9 +7,15 @@ use Neteast\YS7\Enum\PTZ;
 /**
  * 云台
  * https://open.ys7.com/doc/zh/book/index/device_ptz.html
+ * 
+ * @property PresetClient $preset 预置点
  */
 class PTZClient extends BaseClient
 {
+    protected $clients = [
+        'preset' => PresetClient::class
+    ];
+
     /**
      * 开始云台转动
      * https://open.ys7.com/doc/zh/book/index/device_ptz.html#device_ptz-api1
