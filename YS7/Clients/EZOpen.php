@@ -9,6 +9,7 @@ class EZOpen extends BaseClient
 {
     public static $defaultOptions = [
         'resolution' => '',  // 清晰度,空标准,hd高清
+        'source' => '', //回放源,自动选择（缺省值）、本地存储（local）、云存储（cloud）
         'baseUrl' => 'ezopen://open.ys7.com/',
     ];
 
@@ -23,14 +24,14 @@ class EZOpen extends BaseClient
 
     /**
      * 录制地址
-     * @param int $start 开始时间时间戳
+     * @param int $begin 开始时间时间戳
      * @param int $end 结束时间时间戳
      * @return string
      */
-    public function rec($deviceSerial, $channelNo = 1, $start = null, $end = null, $options = [])
+    public function rec($deviceSerial, $channelNo = 1, $begin = null, $end = null, $options = [])
     {
-        if($start) {
-            $options['start'] = (new \DateTime("@$start"))->format('YmdHis');
+        if($begin) {
+            $options['begin'] = (new \DateTime("@$begin"))->format('YmdHis');
         }
         if($end) {
             $options['end'] = (new \DateTime("@$end"))->format('YmdHis');
@@ -41,26 +42,21 @@ class EZOpen extends BaseClient
     private function getEZUrl($deviceSerial, $channelNo, $type, $options = [])
     {
         $options = array_merge(static::$defaultOptions, $options);
-        $videoId = $this->getVideoId($deviceSerial, $channelNo);
-        $url = $options['baseUrl'] . $videoId;
+        $url = $options['baseUrl'] . $deviceSerial . '/' . $channelNo;
         if($options['resolution']) {
             $url .= '.' . $options['resolution'];
+            unset($options['resolution']);
+        }
+        if($options['source']) {
+            $url .= '.' . $options['source'];
+            unset($options['source']);
         }
         $url .= $type;
         unset($options['baseUrl']);
-        unset($options['resolution']);
         if($querystr = http_build_query($options)) {
             $url .= '?' . $querystr;
         }
-        return $url;
-    }
 
-    private function getVideoId($deviceSerial, $channelNo)
-    {
-        $data = $this->getBaseClient()->live->address($deviceSerial, null, $channelNo);
-        $originAddress = $data['liveAddress'];
-        $originPath = parse_url($originAddress, PHP_URL_PATH);
-        $filename = array_pop((explode('/', $originPath)));
-        return explode('.', $filename)[0];
+        return $url;
     }
 }
