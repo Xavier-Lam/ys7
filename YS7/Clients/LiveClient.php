@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients;
 
 /**
@@ -21,7 +22,7 @@ class LiveClient extends BaseClient
             'deviceSerial' => $deviceSerial,
             'channelNo' => $channelNo
         ];
-        if($expiresIn) {
+        if ($expiresIn) {
             $req['expireTime'] = $expiresIn;
         }
         return $this->sendWithAuth('/api/lapp/live/address/limited', $req)->json()['data'];

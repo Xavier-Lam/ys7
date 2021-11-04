@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients\Device;
 
 use Neteast\YS7\Clients\BaseClient;
@@ -15,12 +16,12 @@ class VideoClient extends BaseClient
             'channelNo' => $channelNo,
             'recType' => $recType
         ];
-        if($startTime) {
+        if ($startTime) {
             $req['startTime'] = $startTime * 1000;
         }
-        if($endTime) {
+        if ($endTime) {
             $req['endTime'] = $endTime * 1000;
         }
-        return $this->sendWithAuth('/api/lapp/video/by/time', $req)->json()['data']?: [];
+        return $this->sendWithAuth('/api/lapp/video/by/time', $req)->json()['data'] ?: [];
     }
 }

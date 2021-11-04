@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Auth;
 
 /**

@@ -1,6 +1,6 @@
 <?php
-namespace Neteast\YS7\Message\DataObject;
 
+namespace Neteast\YS7\Message\DataObject;
 
 /**
  * @property Header $header
@@ -9,20 +9,20 @@ namespace Neteast\YS7\Message\DataObject;
  */
 class Message
 {
-    const TYPE_ALARM = 'ys.alarm';
-    const TYPE_ONOFFLINE = 'ys.onoffline';
+    public const TYPE_ALARM = 'ys.alarm';
+    public const TYPE_ONOFFLINE = 'ys.onoffline';
 
     public static function fromApi($data)
     {
-        $rv = new static;
+        $rv = new static();
         $header = new Header();
-        foreach($data['header'] as $key => $value) {
+        foreach ($data['header'] as $key => $value) {
             $header->$key = $value;
         }
         $rv->header = $header;
         $rv->body = (object)$data['body'];
         $pictureList = [];
-        foreach($data['pictureList'] as $picture) {
+        foreach ($data['pictureList'] as $picture) {
             $pictureList[] = (object)$picture;
         }
         $rv->pictureList = $pictureList;

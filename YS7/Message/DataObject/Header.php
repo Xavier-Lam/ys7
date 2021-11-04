@@ -1,6 +1,6 @@
 <?php
-namespace Neteast\YS7\Message\DataObject;
 
+namespace Neteast\YS7\Message\DataObject;
 
 /**
  * @property int $channelNo
@@ -20,7 +20,7 @@ class Header
 
     public function __set($name, $value)
     {
-        if($name === 'messageTime') {
+        if ($name === 'messageTime') {
             $value = intval($value/1000);
             $value = new \DateTime("@{$value}");
         }

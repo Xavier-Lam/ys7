@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7;
 
 use Psr\SimpleCache\CacheInterface;
@@ -16,7 +17,7 @@ class YS7Config
      */
     public static function getCache()
     {
-        if(!isset(static::$_cache)) {
+        if (!isset(static::$_cache)) {
             static::$_cache = new DummyCache();
         }
         return static::$_cache;

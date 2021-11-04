@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients\RAM;
 
 use Neteast\YS7\Auth\YS7SubAuth;
@@ -18,7 +19,9 @@ class TokenClient extends BaseClient
     public function get($accountId)
     {
         $resp = $this->sendWithAuth(
-            '/api/lapp/ram/token/get', [ 'accountId' => $accountId])->json();
+            '/api/lapp/ram/token/get',
+            [ 'accountId' => $accountId]
+        )->json();
         $data = $resp['data'];
         return new YS7SubAuth($this->auth->getAppKey(), $data['accessToken']);
     }

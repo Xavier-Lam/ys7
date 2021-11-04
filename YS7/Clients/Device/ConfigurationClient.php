@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients\Device;
 
 use Neteast\YS7\Clients\BaseClient;
@@ -19,7 +20,7 @@ class ConfigurationClient extends BaseClient
     public function setEncrypt($deviceSerial, $validateCode, $on = true)
     {
         $url = '/api/lapp/device/encrypt/';
-        $url .= $on? 'on': 'off';
+        $url .= $on ? 'on' : 'off';
         $this->sendWithAuth($url, [
             'deviceSerial' => $deviceSerial,
             'validateCode' => $validateCode
@@ -37,9 +38,9 @@ class ConfigurationClient extends BaseClient
     {
         $req = [
             'deviceSerial' => $deviceSerial,
-            'enable' => $enable? 1: 0
+            'enable' => $enable ? 1 : 0
         ];
-        if($channelNo) {
+        if ($channelNo) {
             $req['channelNo'] = $channelNo;
         }
         $this->sendWithAuth('/api/lapp/device/scene/switch/set', $req);
@@ -55,7 +56,7 @@ class ConfigurationClient extends BaseClient
     {
         $this->sendWithAuth('/api/lapp/device/notify/switch', [
             'deviceSerial' => $deviceSerial,
-            'enable' => $enable? 1: 0
+            'enable' => $enable ? 1 : 0
         ]);
     }
 
@@ -70,9 +71,9 @@ class ConfigurationClient extends BaseClient
     {
         $req = [
             'deviceSerial' => $deviceSerial,
-            'enable' => $enable? 1: 0
+            'enable' => $enable ? 1 : 0
         ];
-        if($channelNo) {
+        if ($channelNo) {
             $req['channelNo'] = $channelNo;
         }
         $this->sendWithAuth('/api/lapp/device/mobile/status/set', $req);

@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients;
 
 use Neteast\YS7\YS7Auth;

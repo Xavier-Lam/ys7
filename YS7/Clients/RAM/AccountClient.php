@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients\RAM;
 
 use Neteast\YS7\Clients\BaseClient;
@@ -22,7 +23,8 @@ class AccountClient extends BaseClient
             [
                 'accountName' => $accountName,
                 'password' => strtolower(md5($this->auth->getAppKey() . '#' . $password))
-            ])->json()['data']['accountId'];
+            ]
+        )->json()['data']['accountId'];
     }
 
     /**
@@ -35,10 +37,10 @@ class AccountClient extends BaseClient
     public function get($accountId = null, $accountName = null)
     {
         $req = [];
-        if($accountId) {
+        if ($accountId) {
             $req['accountId'] = $accountId;
         }
-        if($accountName) {
+        if ($accountName) {
             $req['accountName'] = $accountName;
         }
         return $this->sendWithAuth('/api/lapp/ram/account/get', $req)->json()['data'];
@@ -74,7 +76,8 @@ class AccountClient extends BaseClient
                 'accountId' => $accountId,
                 'oldPassword' => strtolower(md5($this->auth->getAppKey() . '#' . $oldPassword)),
                 'newPassword' => strtolower(md5($this->auth->getAppKey() . '#' . $password))
-            ])->json()['data'];
+            ]
+        )->json()['data'];
     }
 
     /**

@@ -1,6 +1,6 @@
 {
     "name": "neteast/ys7",
-    "version": "0.2.0",
+    "version": "0.2.2",
     "type": "library",
     "description": "海康威视设备萤石开放平台(萤石云)PHP SDK,用于接入海康设备直播,通信等功能",
     "keywords": [

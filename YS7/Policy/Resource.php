@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Policy;
 
 /**
@@ -6,8 +7,8 @@ namespace Neteast\YS7\Policy;
  */
 class Resource
 {
-    const TYPE_DEV = 'dev';
-    const TYPE_CAM = 'cam';
+    public const TYPE_DEV = 'dev';
+    public const TYPE_CAM = 'cam';
 
     public $type;
     public $deviceSerial;
@@ -22,13 +23,13 @@ class Resource
     {
         $this->deviceSerial = $deviceSerial;
         $this->channelNo = $channelNo;
-        $this->type = $channelNo? static::TYPE_CAM: static::TYPE_DEV;
+        $this->type = $channelNo ? static::TYPE_CAM : static::TYPE_DEV;
     }
 
     public function __toString()
     {
         $rv = "{$this->type}:{$this->deviceSerial}";
-        if($this->channelNo) {
+        if ($this->channelNo) {
             $rv .= ":{$this->channelNo}";
         }
         return $rv;

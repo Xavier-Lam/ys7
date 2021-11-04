@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Message;
 
 use Neteast\YS7\Exceptions\YS7Exception;
@@ -44,9 +45,8 @@ class Consumer
     {
         try {
             $messages = $this->client->mq->consumer->getMessages($this->consumerId);
-        }
-        catch(YS7Exception $e) {
-            if($e->getCode() === "70101") {
+        } catch (YS7Exception $e) {
+            if ($e->getCode() === "70101") {
                 $this->createConsumerId();
                 $messages = $this->client->mq->consumer->getMessages($this->consumerId);
             } else {
@@ -55,9 +55,9 @@ class Consumer
         }
 
         // TODO: try catch signals
-        foreach($messages as $message) {
+        foreach ($messages as $message) {
             $message = Message::fromApi($message);
-            foreach($this->handlers as $handler) {
+            foreach ($this->handlers as $handler) {
                 $handler($message, $this, $this->client);
             }
         }

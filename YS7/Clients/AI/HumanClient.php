@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients\AI;
 
 use Neteast\YS7\Clients\BaseClient;
@@ -13,7 +14,7 @@ class HumanClient extends BaseClient
      * 检测人数
      * https://open.ys7.com/doc/zh/book/index/ai/body.html#body-api2
      * @param mixed $image
-     * @return int 
+     * @return int
      */
     public function detectNum($image)
     {
@@ -43,7 +44,7 @@ class HumanClient extends BaseClient
 
     protected function handleImage($image)
     {
-        if(is_string($image)) {
+        if (is_string($image)) {
             $image = file_get_contents($image);
         }
         return base64_encode($image);

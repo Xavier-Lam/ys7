@@ -1,8 +1,8 @@
 <?php
+
 namespace Neteast\YS7\Auth;
 
 use Shisa\HTTPClient\Auth\AbstractAuth;
-use Shisa\HTTPClient\Exceptions\ResponseError;
 use Neteast\YS7\YS7Config;
 use Shisa\HTTPClient\HTTP\Request;
 
@@ -15,20 +15,20 @@ abstract class BaseAuth extends AbstractAuth
         return !!$this->getAccessToken();
     }
 
-    public function isInvalidAuthError(ResponseError $e)
+    public function isInvalidAuthError($e)
     {
         return $e->getCode() === 10002;
     }
 
     public function setAccessToken($accessToken, $expireTime = null)
     {
-        if($expireTime) {
+        if ($expireTime) {
             $expiresIn = ($expireTime - time()*1000)/1000;
         } else {
             $expiresIn = 7*60*60;
         }
         $accessTokenKey = $this->getAccessTokenKey();
-        if($accessTokenKey) {
+        if ($accessTokenKey) {
             YS7Config::getCache()
                 ->set($accessTokenKey, $accessToken, $expiresIn);
         }
@@ -37,9 +37,9 @@ abstract class BaseAuth extends AbstractAuth
 
     public function getAccessToken()
     {
-        if(!$this->accesstoken) {
+        if (!$this->accesstoken) {
             $accessTokenKey = $this->getAccessTokenKey();
-            if($accessTokenKey) {
+            if ($accessTokenKey) {
                 $this->accesstoken = YS7Config::getCache()
                     ->get($accessTokenKey);
             }

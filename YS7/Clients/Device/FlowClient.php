@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients\Device;
 
 use Neteast\YS7\Clients\BaseClient;
@@ -21,7 +22,7 @@ class FlowClient extends BaseClient
         $req = [
             'deviceSerial' => $deviceSerial
         ];
-        if($channelNo) {
+        if ($channelNo) {
             $req['channelNo'] = $channelNo;
         }
         return $this->sendWithAuth('/api/lapp/passengerflow/switch/status', $req)
@@ -39,9 +40,9 @@ class FlowClient extends BaseClient
     {
         $req = [
             'deviceSerial' => $deviceSerial,
-            'enable' => $enable? 1: 0
+            'enable' => $enable ? 1 : 0
         ];
-        if($channelNo) {
+        if ($channelNo) {
             $req['channelNo'] = $channelNo;
         }
         return $this->sendWithAuth('/api/lapp/passengerflow/switch/set', $req)
@@ -62,7 +63,7 @@ class FlowClient extends BaseClient
             'deviceSerial' => $deviceSerial,
             'channelNo' => $channelNo
         ];
-        if($date) {
+        if ($date) {
             $req['date'] = strtotime($date->format('Y-m-d 00:00:00')) * 1000;
         }
         return $this->sendWithAuth('/api/lapp/passengerflow/daily', $req)
@@ -83,7 +84,7 @@ class FlowClient extends BaseClient
             'deviceSerial' => $deviceSerial,
             'channelNo' => $channelNo
         ];
-        if($date) {
+        if ($date) {
             $req['date'] = $date->getTimestamp() * 1000;
         }
         return $this->sendWithAuth('/api/lapp/passengerflow/hourly', $req)

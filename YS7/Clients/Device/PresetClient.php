@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients\Device;
 
 use Neteast\YS7\Clients\BaseClient;

@@ -1,6 +1,6 @@
 <?php
-namespace Neteast\YS7\Message\DataObject;
 
+namespace Neteast\YS7\Message\DataObject;
 
 /**
  * @property string $id

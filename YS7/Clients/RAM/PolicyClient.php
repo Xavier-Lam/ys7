@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients\RAM;
 
 use Neteast\YS7\Clients\BaseClient;
@@ -23,11 +24,12 @@ class PolicyClient extends BaseClient
             [
                 'accountId' => $accountId,
                 'policy' => json_encode([
-                    "Statement" => map(function($o) {
+                    "Statement" => map(function ($o) {
                         return $o->data();
                     }, $policy)
                 ])
-            ]);
+            ]
+        );
     }
 
     /**
@@ -43,11 +45,12 @@ class PolicyClient extends BaseClient
             [
                 'accountId' => $accountId,
                 'policy' => json_encode([
-                    "Statement" => map(function($o) {
+                    "Statement" => map(function ($o) {
                         return $o->data();
                     }, $policy)
                 ])
-            ]);
+            ]
+        );
     }
 
     /**
@@ -63,6 +66,7 @@ class PolicyClient extends BaseClient
             [
                 'accountId' => $accountId,
                 'deviceSerial' => $deviceSerial
-            ]);
+            ]
+        );
     }
 }

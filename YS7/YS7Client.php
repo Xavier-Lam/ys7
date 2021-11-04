@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7;
 
 use Neteast\YS7\Clients\BaseClient;
@@ -51,7 +52,7 @@ class YS7Client extends BaseClient
      */
     public function consumer($group = 1)
     {
-        if(!isset($this->consumers[$group])) {
+        if (!isset($this->consumers[$group])) {
             $this->consumers[$group] = new Consumer($this, $group);
         }
         return $this->consumers[$group];

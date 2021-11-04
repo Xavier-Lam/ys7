@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients\MQ;
 
 use Neteast\YS7\Clients\BaseClient;
@@ -29,7 +30,7 @@ class ConsumerClient extends BaseClient
         $req = [
             'consumerId' => $consumerId,
         ];
-        if($preCommit) {
+        if ($preCommit) {
             $req['preCommit'] = 1;
         }
         return $this->sendWithAuth('/api/lapp/mq/v1/consumer/messages', $req)->json()['data'];

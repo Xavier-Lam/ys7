@@ -1,4 +1,5 @@
 <?php
+
 namespace Neteast\YS7\Clients;
 
 use Shisa\HTTPClient\Clients\AuthClient;
@@ -11,7 +12,7 @@ use Neteast\YS7\Exceptions\YS7Exception;
 class BaseClient extends AuthClient
 {
     use RecursiveClientMixin;
-    
+
     public function __construct($auth = null)
     {
         parent::__construct($auth);
@@ -23,20 +24,22 @@ class BaseClient extends AuthClient
         $response = parent::handleResponse($response, $request, $options);
 
         $json = $response->json();
-        if($json['code'] === '200') {
+        if ($json['code'] === '200') {
             return $response;
         }
 
-        if(isset($json['code'])) {
+        if (isset($json['code'])) {
             throw new YS7Exception(
                 $json['code'],
                 $json['msg'],
-                $response);
+                $response
+            );
         } else {
             throw new YS7Exception(
                 -500,
                 'invalid response',
-                $response);
+                $response
+            );
         }
     }
 }
