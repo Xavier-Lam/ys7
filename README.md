@@ -9,7 +9,7 @@
 > https://open.ys7.com/doc/zh/book/index/user.html
 
 ## Installation
-    composer require neteast\ys7
+    composer require neteast/ys7
 
 ## Quickstart
 
